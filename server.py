@@ -48,7 +48,8 @@ def start_server():
             print(f"Connection established with {addr}")
             
             # Starta en tråd för att hantera varje klient
-            threading.Thread(target=handle_client, args=(client_socket,)).start()
+            threading.Thread(target=handle_client, args=(client_socket,), daemon=True).start()
+
     
     except Exception as e:
         print(f"Error starting server: {e}")
